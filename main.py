@@ -1,4 +1,3 @@
-
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, input_message_content, user_and_chats
 from pyrogram.types import ChatPermissions
@@ -27,7 +26,7 @@ START_BUTTONS=[
     [InlineKeyboardButton('ENTER SUBJECT MENU',callback_data='A001')],
     [InlineKeyboardButton('MORE',callback_data='A003')],
     [InlineKeyboardButton('HELP',url='https://t.me/ictstudenthelper/140')],
-    [InlineKeyboardButton('CLOSE',callback_data='A002')],
+    [InlineKeyboardButton('CLOSE',callback_data='CLOSE')],
 ]
 # subject menu
 A001_BUTTONS=[
@@ -91,7 +90,7 @@ def start(bot, message):
 
 @bot.on_callback_query()
 async def callback_query(client: Client, query: CallbackQuery):
-    if query.data=="ICTMENU_CALLBACK":
+    if query.data=="A001":
         reply_markup = InlineKeyboardMarkup(A001_BUTTONS)
         try:
             await query.edit_message_text(
@@ -101,17 +100,9 @@ async def callback_query(client: Client, query: CallbackQuery):
         except MessageNotModified:
             pass
 
-    elif query.data=="A002_CALLBACK":
-        reply_markup=InlineKeyboardMarkup(START_BUTTONS)
-        try:
-            await query.edit_message_text(
-                A002_TEXT,
-                reply_markup=reply_markup
-            )
-        except MessageNotModified:
-            pass
 
-    elif query.data=="A003_CALLBACK":
+
+    elif query.data=="A003":
         reply_markup=InlineKeyboardMarkup(A003_BUTTONS)
         try:
             await query.edit_message_text(
@@ -121,7 +112,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         except MessageNotModified:
             pass
 
-    elif query.data=="A004_CALLBACK":
+    elif query.data=="A004":
         reply_markup=InlineKeyboardMarkup(A004_BUTTONS)
         try:
             await query.edit_message_text(
@@ -131,7 +122,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         except MessageNotModified:
             pass
 
-    elif query.data=="A005_CALLBACK":
+    elif query.data=="A005":
         reply_markup=InlineKeyboardMarkup(A005_BUTTONS)
         try:
             await query.edit_message_text(
@@ -141,7 +132,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         except MessageNotModified:
             pass        
 
-    elif query.data=="A006_CALLBACK":
+    elif query.data=="A006":
         reply_markup=InlineKeyboardMarkup(A006_BUTTONS)
         try:
             await query.edit_message_text(
@@ -151,7 +142,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         except MessageNotModified:
             pass
 
-    elif query.data=="A007_CALLBACK":
+    elif query.data=="A007":
         reply_markup=InlineKeyboardMarkup(A007_BUTTONS)
         try:
             await query.edit_message_text(
@@ -161,7 +152,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         except MessageNotModified:
             pass
 
-    elif query.data=="A008_CALLBACK":
+    elif query.data=="A008":
         reply_markup=InlineKeyboardMarkup(A008_BUTTONS)
         try:
             await query.edit_message_text(
@@ -171,7 +162,7 @@ async def callback_query(client: Client, query: CallbackQuery):
         except MessageNotModified:
             pass
 
-    elif query.data=="A009_CALLBACK":
+    elif query.data=="A009":
         reply_markup=InlineKeyboardMarkup(A009_BUTTONS)
         try:
             await query.edit_message_text(
