@@ -1,3 +1,4 @@
+
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, input_message_content, user_and_chats
 from pyrogram.types import ChatPermissions
@@ -20,6 +21,7 @@ A006_TEXT='BIOLOGY'
 A007_TEXT='TEC MENU'
 A008_TEXT='COMMERCE'
 A009_TEXT='ART MENU'
+CLOSE_TEXT='Menu closed!'
 
 START_BUTTONS=[
     [InlineKeyboardButton('ENTER SUBJECT MENU',callback_data='A001')],
@@ -35,38 +37,46 @@ A001_BUTTONS=[
     [InlineKeyboardButton('TECHNOLGY',callback_data='A007')],
     [InlineKeyboardButton('COMMERCE',callback_data='A008')],
     [InlineKeyboardButton('ART',callback_data='A009')],
+    [InlineKeyboardButton('🔙BACK',callback_data='MAIN')],
 ]
 #more
 A003_BUTTONS=[
     [InlineKeyboardButton('HOW TO USE',url='https://t.me/ictstudenthelper/140')],
     [InlineKeyboardButton('Useful groups and channels',callback_data='A010')],
     [InlineKeyboardButton('➕ADD TO GROUP➕',url='http://t.me/grpmenubot?startgroup=botstart')],
+    [InlineKeyboardButton('🔙BACK',callback_data='MAIN')],
 ]
 #ict
 A004_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A010'),InlineKeyboardButton('NOTES',callback_data='A011')],
     [InlineKeyboardButton('🔙BACK',callback_data='A001'),InlineKeyboardButton('❌CLOSE❌',callback_data='close')],
+    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
 ]
 #maths
 A005_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A011'),InlineKeyboardButton('NOTES',callback_data='A012')],
     [InlineKeyboardButton('BACK',callback_data='A001'),InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
+    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
 ]
 A006_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A013'),InlineKeyboardButton('NOTES',callback_data='A014')],
     [InlineKeyboardButton('BACK',callback_data='A001'),InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
+    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
 ]
 A007_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A015'),InlineKeyboardButton('NOTES',callback_data='A016')],
     [InlineKeyboardButton('BACK',callback_data='A001'),InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
+    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
 ]
 A008_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A016'),InlineKeyboardButton('NOTES',callback_data='A017')],
     [InlineKeyboardButton('BACK',callback_data='A001'),InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
+    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
 ]
 A009_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A018'),InlineKeyboardButton('NOTES',callback_data='A019')],
     [InlineKeyboardButton('BACK',callback_data='A001'),InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
+    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
 ]
 
 @bot.on_message(filters.command('start')) #start
@@ -171,6 +181,25 @@ async def callback_query(client: Client, query: CallbackQuery):
         except MessageNotModified:
             pass
 
+    elif query.data=="MAIN":
+        reply_markup=InlineKeyboardMarkup(START_BUTTONS)
+        try:
+            await query.edit_message_text(
+                START_MESSAGE,
+                reply_markup=reply_markup
+            )
+        except MessageNotModified:
+            pass
+
+    elif query.data=="CLOSE":
+        reply_markup=InlineKeyboardButton(CLOSE_BUTTONS)
+        try:
+            await query.edit_message_text(
+                CLOSE_TEXT,
+                reply_markup=reply_markup
+            )
+        except MessageNotModified:
+            pass
         
 print("bot alive")
 bot.run()
