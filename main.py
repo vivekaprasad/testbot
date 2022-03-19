@@ -1,5 +1,3 @@
-from fileinput import close
-from winreg import DeleteValue
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, input_message_content, user_and_chats
 from pyrogram.types import ChatPermissions
