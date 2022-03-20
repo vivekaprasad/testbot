@@ -26,7 +26,7 @@ START_BUTTONS=[
     [InlineKeyboardButton('ENTER SUBJECT MENU',callback_data='A001')],
     [InlineKeyboardButton('MORE',callback_data='A003')],
     [InlineKeyboardButton('HELP',url='https://t.me/ictstudenthelper/140')],
-    [InlineKeyboardButton('CLOSE',callback_data='CLOSE')],
+    [InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
 ]
 # subject menu
 A001_BUTTONS=[
@@ -36,49 +36,53 @@ A001_BUTTONS=[
     [InlineKeyboardButton('TECHNOLGY',callback_data='A007')],
     [InlineKeyboardButton('COMMERCE',callback_data='A008')],
     [InlineKeyboardButton('ART',callback_data='A009')],
-    [InlineKeyboardButton('🔙BACK',callback_data='MAIN')],
-    [InlineKeyboardButton('CLOSE',callback_data='CLOSE')],
+    [InlineKeyboardButton('⬅️BACK',callback_data='MAIN')],
+    [InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
 ]
 #more
 A003_BUTTONS=[
     [InlineKeyboardButton('HOW TO USE',url='https://t.me/ictstudenthelper/140')],
     [InlineKeyboardButton('Useful groups and channels',callback_data='A010')],
     [InlineKeyboardButton('➕ADD TO GROUP➕',url='http://t.me/grpmenubot?startgroup=botstart')],
-    [InlineKeyboardButton('🔙BACK',callback_data='MAIN')],
-    [InlineKeyboardButton('CLOSE',callback_data='CLOSE')],
+    [InlineKeyboardButton('⬅️BACK',callback_data='MAIN')],
+    [InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
 ]
 #ict
 A004_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A010'),InlineKeyboardButton('NOTES',callback_data='A011')],
-    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
-    [InlineKeyboardButton('CLOSE',callback_data='CLOSE')],
+    [InlineKeyboardButton('⬅️BACK',callback_data='A001'),InlineKeyboardButton('START MENU',callback_data='MAIN')],
+    [InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
 ]
 #maths
 A005_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A011'),InlineKeyboardButton('NOTES',callback_data='A012')],
-    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
-    [InlineKeyboardButton('CLOSE',callback_data='CLOSE')],
+    [InlineKeyboardButton('⬅️BACK',callback_data='A001'),InlineKeyboardButton('MAIN MENU',callback_data='MAIN')],
+    [InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
 ]
 A006_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A013'),InlineKeyboardButton('NOTES',callback_data='A014')],
-    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
-    [InlineKeyboardButton('CLOSE',callback_data='CLOSE')],
+    [InlineKeyboardButton('⬅️BACK',callback_data='A001'),InlineKeyboardButton('MAIN MENU',callback_data='MAIN')],
+    [InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
 ]
 A007_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A015'),InlineKeyboardButton('NOTES',callback_data='A016')],
-    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
-    [InlineKeyboardButton('CLOSE',callback_data='CLOSE')],
+    [InlineKeyboardButton('⬅️BACK',callback_data='A001'),InlineKeyboardButton('MAIN MENU',callback_data='MAIN')],
+    [InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
 ]
 A008_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A016'),InlineKeyboardButton('NOTES',callback_data='A017')],
-    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
-    [InlineKeyboardButton('CLOSE',callback_data='CLOSE')],
+    [InlineKeyboardButton('⬅️BACK',callback_data='A001'),InlineKeyboardButton('MAIN MENU',callback_data='MAIN')],
+    [InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
 ]
 A009_BUTTONS=[
     [InlineKeyboardButton('PAPERS',callback_data='A018'),InlineKeyboardButton('NOTES',callback_data='A019')],
-    [InlineKeyboardButton('MAIN MENU',callback_data='MAIN'),InlineKeyboardButton('BACK',callback_data='A001')],
-    [InlineKeyboardButton('CLOSE',callback_data='CLOSE')],
+    [InlineKeyboardButton('⬅️BACK',callback_data='A001'),InlineKeyboardButton('MAIN MENU',callback_data='MAIN')],
+    [InlineKeyboardButton('❌CLOSE❌',callback_data='CLOSE')],
 ]
+
+
+
+
 
 @bot.on_message(filters.command('start')) #start
 def start(bot, message):
@@ -185,7 +189,7 @@ async def callback_query(client: Client, query: CallbackQuery):
             pass
 
     elif query.data=="CLOSE":
-        reply_markup=InlineKeyboardButton(CLOSE_BUTTONS)
+        reply_markup=InlineKeyboardButton(START_BUTTONS)
         try:
             await query.edit_message_text(
                 CLOSE_TEXT,
